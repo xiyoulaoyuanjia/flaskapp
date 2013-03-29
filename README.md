@@ -1,7 +1,7 @@
 **练习flask的学习**
 
 >* [使用ajax上传文档](https://github.com/xiyoulaoyuanjia/AboutWeb/blob/master/%E4%BD%BF%E7%94%A8ajax%E4%B8%8A%E4%BC%A0%E6%96%87%E6%A1%A3.md)
-
+>* [an-introduction-to-pythons-flask-framework](http://net.tutsplus.com/tutorials/python-tutorials/an-introduction-to-pythons-flask-framework/)
 
 **已完成的demo**
 
