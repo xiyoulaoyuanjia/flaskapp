@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+{% block js %}
+	<link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}" />
+{% endblock %}
+
+
+{% block content %}
+
+
+
+		<div id="main">
+				<h1>Upload Your Images</h1>
+				<form method="post" enctype="multipart/form-data"  action="/upload_file">
+						<input type="file" name="images" id="images" multiple />
+						<button type="submit" id="btn">Upload Files!</button>
+				</form>
+
+				<div id="response"></div>
+				<ul id="image-list">
+
+				</ul>
+		</div>
+
+</body>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+	<script src="{{ url_for('static',filename='js/upload.js') }}"></script>  
+{% endblock %}

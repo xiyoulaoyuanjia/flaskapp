@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Flask App</title>    
+	<strong><link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}"></strong>
+	<!--这样做的好处是如果用户已经去过使用与 Google 相同版本的 jQuery 的 网站后，访问你的网站时，页面可能会更快地载入，因为浏览器已经缓存了 jQuery -->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.js"></script>
+	<script>window.jQuery || document.write('<script src="{{ url_for('static', filename='js/jquery.js') }}">\x3C/script>')</script>
+  
+	{% block js%}
+
+	{% endblock %}
+
+  </head>
+  <body>
+   
+  	<header>
+  	<div class="container">
+    <h1 class="logo">laboratory</h1>
+    <strong><nav>
+      <ul class="menu">
+        <li><a href="{{ url_for('home') }}"</a>Home</li>
+        <li><a href="{{ url_for('about') }}">About</a></li>
+        <li><a href="{{ url_for('getlink') }}">GetLink</a></li>
+        <li><a href="{{ url_for('markdownEditor') }}">makeDown 编辑器</a></li>
+      </ul>
+    </nav></strong>
+  	</div>
+	</header> 
+    <div class="container">
+      {% block content %}
+      {% endblock %}
+    </div>
+     
+  </body>
+</html>

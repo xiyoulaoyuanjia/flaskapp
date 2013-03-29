@@ -1,0 +1,77 @@
+{% extends "layout.html" %}
+
+{% block js %}
+
+<!--
+<input id="fileupload" type="file" name="files[]" data-url="server/php/" multiple>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="{{ url_for('static',filename='js/jQuery-File-Upload-jquery-ui/js/vendor/jquery.ui.widget.js')}}"></script>
+<script src="{{ url_for('static',filename='js/jQuery-File-Upload-jquery-ui/js/jquery.iframe-transport.js')}}"></script>
+<script src="{{ url_for('static',filename='js/jQuery-File-Upload-jquery-ui/js/jquery.fileupload.js') }}"></script>
+-->
+{%endblock %}
+
+{% block content %}
+
+
+<script type=text/javascript>
+		$(function(){
+	alert("XXXXYYYYYYYYYYY");
+	$.getJSON('http://127.0.0.1:5000/getlink/get_token',{},function(data) {
+
+				alert(data.token);
+			
+			});
+
+
+/*							
+			$.ajax({
+				url:'http://openapi.vdisk.me/',
+				data:'{'ggg',fff}',
+				type:'POST',
+				dataType:'text',
+				async:false,
+				timeout:500,
+				error:function(){
+					alert("GGGGGGGGGGGG");
+					},
+				success:function(data){
+
+					alert(data);
+				}	
+					});
+*/					
+});
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+<div class="jumbo">
+	<form id="uploadForm" action="File.ashx">
+  	<table border="0" cellspacing="1" class="fu_list">
+      <tr>
+        <td><span id="FileErea" class="ferea"><input type="file" name="fileId" class="files"></span></td>
+      </tr>
+  	</table>
+	</form>
+	<div/>
+			-->
+{% endblock %}
