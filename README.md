@@ -24,6 +24,7 @@ __todu__
 *******************************
 ***在线markdown编辑器***
 
+[参考文档](https://github.com/xiyoulaoyuanjia/AboutWeb/blob/master/%E5%9C%A8%E7%BA%BFmarkdown%E7%BC%96%E8%BE%91%E5%99%A8%E7%9A%84%E8%AF%B4%E6%98%8E%E6%96%87%E6%A1%A3.md)
 
 __感谢以下项目__
 
