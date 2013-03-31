@@ -1,5 +1,5 @@
 import os
-from flask import Flask, render_template, jsonify,request
+from flask import Flask, render_template, jsonify,request,url_for
 from werkzeug import secure_filename
 
 from vdisksdk import * 
@@ -8,7 +8,13 @@ ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
 
 app = Flask(__name__)      
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-
+#app.add_url_rule('/favicon.ico',redirect_to=url_for('static', filename='img/favicon.ico'))
+#app.add_url_rule('/favicon.ico',redirect_to='/static/img/favicon.ico')
+#print url_for('static', filename='favicon.ico')
+#app.add_url_rule('/favicon.ico',redirect_to=url_for('static', filename='favicon.ico'))
+#@app.route("/favicon.ico")
+#def addFavicon():
+#    app.add_url_rule('/favicon.ico',redirect_to="/static/img/favicon.ico")
 
 
 def allowed_file(filename):
@@ -73,7 +79,6 @@ def get_token():
 @app.route('/markdownEditor')
 def markdownEditor():
   return render_template('markdownEditor/markdownEditor.html')
-				
 
 
 if __name__ == '__main__':

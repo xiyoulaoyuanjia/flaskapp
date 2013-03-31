@@ -3,38 +3,67 @@
 <head>
     <meta charset="UTF-8" />
     <title>在线markdown编辑器</title>
-<!--    <link href="mahua.css" rel="stylesheet" type="text/css" /> -->
-    <strong><link rel="stylesheet" href="{{ url_for('static', filename='css/markdownEditor/mahua.css') }}"></strong>
+    <strong><link rel="stylesheet" href="{{ url_for('static', filename='css/markdownEditor/style.css') }}"></strong>
+    <strong><link rel="stylesheet" href="{{ url_for('static', filename='css/markdownEditor/preview.css') }}"></strong>
+    <script src="{{ url_for('static',filename='js/jquery.js') }}"></script>
+    <script src="{{ url_for('static',filename='js/markdownEditor/ace.js') }}"></script> 
+    <script src="{{ url_for('static',filename='js/markdownEditor/markdown.js') }}"></script> 
+    <script src="{{ url_for('static',filename='js/markdownEditor/mymade.js') }}"></script>
+   
+    <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.ico') }}">
+    
 </head>
+
+
+
 <body>
-	<div class="mahua-container">
-        <div class="mahua-left">
-            <div id="mahua-editor" style="height:100%;width:50%;" ></div>
-        </div>
-        <div class="mahua-right" id="preview" style="height:100%;width:50%;"> </div>
-    </div>
-</body>
-<script src="{{ url_for('static',filename='js/markdownEditor/ace.js') }}"></script>
-<script src="{{ url_for('static',filename='js/markdownEditor/markdown.js') }}"></script>
-<!--这样做的好处是如果用户已经去过使用与 Google 相同版本的 jQuery 的 网站后，访问你的网站时，页面可能会更快地载入，因为浏览器已经缓存了 jQuery -->
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.js"></script>
-    <script>window.jQuery || document.write('<script src="{{ url_for('static', filename='js/jquery.js') }}">\x3C/script>')</script>
 
+<div id="bar">
+    <h1 id="title"><span class="desc">An Editor for markdown</span></h1>
+    <div id="control">
 
+	<a href="#" class="button" id="Synchronous_button">
+            <span class="label">Synchronous</span>
+        </a>      
 <!--
-<script src="lib/markdown.js"></script>
-<script type="text/javascript" src="ace.js"></script> 
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"> </script>
+        <input type="file" id="import_file_button"/>
+        <div id="export_button_wrapper">
+        <a href="#" class="button" id="export_button">
+            <span class="label">Export ▾</span>
+        </a>
+        <ul class="menu" id="export_menu"> 
+            <li>
+            <a class="menuitem" href="#" id="export_source_button">Export Source</a>
+            </li>
+            <li>
+            <a class="menuitem" href="#" id="export_html_button">Export HTML</a>
+            </li>
+            <li>
+            <a class="menuitem" href="#" id="export_full_html_button">Export HTML(Full)</a>
+            </li>
+        </ul>
+        </div>
+
+    </div>
+    <div id="color_scheme"><label>Color Scheme</label>
+        <a href="dark" id="color_scheme_dark" class="selected"><span/></a>
+        <a href="light" id="color_scheme_light"><span/></a>
+    </div>
 -->
-<script>
-  var editor = ace.edit("mahua-editor");
-  editor.setTheme("ace/theme/chrome");
-    var preview = $("#preview"); 
-// $ 的这种用法 表示了一个 DOM 的 Object 
-Dom = $('<iframe frameborder="0" marginheight="0" style="height:100%;width:100%;" src="{{ url_for("static",filename="html/proxy.html")  }}" id="iframe"></iframe>');
-   preview.append(Dom);
-   editor.getSession().on('change', function(e) {
-document.getElementById('iframe').src="data:text/html;charset=utf-8,"+markdown.toHTML(editor.getValue());
-});
-</script>
+</div>
+
+
+<div id="container">
+    <div class="pane" id="input" placeholder="type some markdown code or drag & drop a .md file here"></div>
+    <div id="preview_pane" class="pane">
+        <div id="preview"></div>
+    </div>
+</div>
+
+
+
+
+
+
+</body>
 </html>
