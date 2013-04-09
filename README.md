@@ -26,6 +26,16 @@ __todu__
 
 [参考文档](https://github.com/xiyoulaoyuanjia/AboutWeb/blob/master/%E5%9C%A8%E7%BA%BFmarkdown%E7%BC%96%E8%BE%91%E5%99%A8%E7%9A%84%E8%AF%B4%E6%98%8E%E6%96%87%E6%A1%A3.md)
 
+
+已经将此打包为 chrome 插件 使用 [下载地址](http://vdisk.weibo.com/s/wUjvZ)
+
+下载之后直接拖到chrome浏览器中即可
+
+![](http://vdisk-thumb-3.wcdn.cn/frame.1024x768/data.vdisk.me/55890007/48e6507f4d36b59dafc70baf84f1f65aa7a53bbe?ip=1365524400,10.73.26.35&ssig=6%2FtWj7Ttw5&Expires=1365523200&KID=sae,l30zoo1wmz)
+
+![](http://vdisk-thumb-4.wcdn.cn/frame.1024x768/data.vdisk.me/55890007/3894889b1001d72d86874f39b8f6c5e07645c370?ip=1365524400,10.73.26.35&ssig=apLcqAdaqX&Expires=1365523200&KID=sae,l30zoo1wmz)
+
+
 __感谢以下项目__
 
 >* [mahua](http://mahua.jser.me/)
