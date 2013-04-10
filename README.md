@@ -31,9 +31,9 @@ __todu__
 
 下载之后直接拖到chrome浏览器中即可
 
-![](http://vdisk-thumb-3.wcdn.cn/frame.1024x768/data.vdisk.me/55890007/48e6507f4d36b59dafc70baf84f1f65aa7a53bbe?ip=1365524400,10.73.26.35&ssig=6%2FtWj7Ttw5&Expires=1365523200&KID=sae,l30zoo1wmz)
+![](http://vdisk.weibo.com/share/embedImage?file=x2kDj)
 
-![](http://vdisk-thumb-4.wcdn.cn/frame.1024x768/data.vdisk.me/55890007/3894889b1001d72d86874f39b8f6c5e07645c370?ip=1365524400,10.73.26.35&ssig=apLcqAdaqX&Expires=1365523200&KID=sae,l30zoo1wmz)
+![](http://vdisk.weibo.com/share/embedImage?file=x2lJ7)
 
 
 __感谢以下项目__
