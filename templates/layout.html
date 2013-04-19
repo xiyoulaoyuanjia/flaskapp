@@ -1,36 +1,91 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Flask App</title>    
-	<strong><link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}"></strong>
+    <title>xiyoulaoyuanjia</title>    
+	<strong><link rel="stylesheet" href="{{ url_for('static', filename='css/layout.css') }}"></strong>
+	
+	
 	<!--这样做的好处是如果用户已经去过使用与 Google 相同版本的 jQuery 的 网站后，访问你的网站时，页面可能会更快地载入，因为浏览器已经缓存了 jQuery -->
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.js"></script>
+	<script src="{{ url_for('static', filename='js/menu.js') }}"></script>
 	<script>window.jQuery || document.write('<script src="{{ url_for('static', filename='js/jquery.js') }}">\x3C/script>')</script>
-  
-	{% block js%}
-
-	{% endblock %}
-
+	<!-- canlendar css 与 js -->
+  	<script src="{{ url_for('static', filename='js/calendar.js') }}"></script>
+	<strong><link rel="stylesheet" href="{{ url_for('static', filename='css/calendar.css') }}"></strong>
+<script type="text/css">	
+	/* Black Menu */
+			#menu_wrapper.black ul {
+				border-top: 2px solid #333;
+				border-bottom: 2px solid #000;
+				background: #333;}
+			#menu_wrapper.black a {color: #CCC;}
+			#menu_wrapper.black li a:hover, #menu_wrapper.black li.active a {color: #999; background: #555; border-bottom: 2px solid #444;}
+			#menu_wrapper.black {background: url(images/black.png) no-repeat right;}
+			#menu_wrapper.black div {background: url(images/black.png) no-repeat left;} left;}
+</script>
   </head>
-  <body>
-   
-  	<header>
-  	<div class="container">
-    <h1 class="logo">laboratory</h1>
-    <strong><nav>
-      <ul class="menu">
-        <li><a href="{{ url_for('home') }}"</a>Home</li>
-        <li><a href="{{ url_for('about') }}">About</a></li>
-        <li><a href="{{ url_for('getlink') }}">GetLink</a></li>
-        <li><a href="{{ url_for('markdownEditor') }}">makeDown 编辑器</a></li>
-      </ul>
-    </nav></strong>
-  	</div>
-	</header> 
-    <div class="container">
-      {% block content %}
-      {% endblock %}
-    </div>
+  <body >
+
+<div id="container">
+  <div id="header">
+		<!-- Black Menu -->
+		<div id="menu_wrapper" class="black">
+		<div class="left"></div>
+			<ul id="menu">
+				<li><a href="/">Home</a></li>
+				<li ><a href="/about">About</a></li>
+				<li><a href="#">Services</a></li>
+				<li><a href="#">Products</a></li>
+				<li><a href="#">Contact</a></li>
+			</ul>
+		</div>
+  </div>
+  <div id="mainContent">
+	    <div id="sidebar">
+			<div class="Calendar">
+				<div id="idCalendarPre">&lt;&lt;</div>
+				<div id="idCalendarNext">&gt;&gt;</div>
+				<span id="idCalendarYear"></span>年 <span id="idCalendarMonth"></span>月
+				<table cellspacing="0">
+				<thead>
+			      	<tr>
+					<td>日</td>
+					<td>一</td>
+					<td>二</td>
+					<td>三</td>
+					<td>四</td>
+					<td>五</td>
+					<td>六</td>
+			      	</tr>
+			    	</thead>
+			    	<tbody id="idCalendar">
+			    	</tbody>
+			  	</table>
+			</div>
+			&nbsp;&nbsp;	
+			<div class="textwidget"><iframe width="100%" height="120" class="share_self"  frameborder="0" scrolling="no" 				src="http://widget.weibo.com/weiboshow/index.php?						language=&width=0&height=550&fansRow=2&ptype=1&speed=0&skin=1&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=3032884477&verifier=1f7c4128&dpc=1"></iframe></div>
+
+	     </div>
+	    <div id="content">
+		{% block content %}
+		{% endblock %}
+	    </div>
+		
+		
+	    <div id="footer">
+			<a id="gotop" href="#" onclick="MGJS.goTop();return false;">回到顶部&nbsp;&nbsp;</a>
+			<a id="powered" >powered by flask</a>
+			<div id="copyright">
+				&nbsp;&nbsp;版权所有 &copy; 2013 xiyoulaoyuanjia &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			</div>
+
+
+	    </div> 
+ </div>
+</div>
+	
+	
+
      
   </body>
 </html>

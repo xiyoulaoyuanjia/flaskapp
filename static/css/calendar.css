@@ -1,0 +1,9 @@
+.Calendar { font-family:Verdana; font-size:12px; background-color:#e0ecf9; text-align:center; width:220px; height:160px; padding:10px; line-height:1.5em; }
+.Calendar a{ color:#1e5494; }
+.Calendar table{ width:100%; border:0; }
+.Calendar table thead{color:#acacac;}
+.Calendar table td { font-size: 11px; padding:1px; }
+#idCalendarPre{ cursor:pointer; float:left; padding-right:5px; }
+#idCalendarNext{ cursor:pointer; float:right; padding-right:5px; }
+#idCalendar td.onToday { font-weight:bold; color:#C60; }
+#idCalendar td.onSelect { font-weight:bold; }

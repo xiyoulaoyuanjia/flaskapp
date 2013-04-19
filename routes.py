@@ -1,34 +1,65 @@
 import os
-from flask import Flask, render_template, jsonify,request,url_for
+import sqlite3
+from flask import Flask, render_template, jsonify,request,url_for,g
 from werkzeug import secure_filename
 
 from vdisksdk import * 
 UPLOAD_FOLDER = 'uploadDir/'
 ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
 
+#from getGithubBlog import sqldb
+
 app = Flask(__name__)      
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-#app.add_url_rule('/favicon.ico',redirect_to=url_for('static', filename='img/favicon.ico'))
-#app.add_url_rule('/favicon.ico',redirect_to='/static/img/favicon.ico')
-#print url_for('static', filename='favicon.ico')
-#app.add_url_rule('/favicon.ico',redirect_to=url_for('static', filename='favicon.ico'))
-#@app.route("/favicon.ico")
-#def addFavicon():
-#    app.add_url_rule('/favicon.ico',redirect_to="/static/img/favicon.ico")
 
+@app.route("/favicon.ico")
+def addFavicon():
+    return app.send_static_file("favicon.ico")
 
 def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
 
- 
+
+
+### for db 
+@app.before_request
+def before_request():
+	g.db = get_db()
+
+def get_db():
+        com=sqlite3.connect("getGithubBlog/getGithubBlog.db")
+        return com
+
+def query_db(query, args=(), one=False):
+    cur = g.db.execute(query, args)
+    rv = [dict((cur.description[idx][0], value)
+               for idx, value in enumerate(row)) for row in cur.fetchall()]
+    return (rv[0] if rv else None) if one else rv
+
+@app.teardown_appcontext
+def close_db_connection(exception):
+    if hasattr(g, 'db'):
+        g.db.close()
+
 @app.route('/')
 def home():
-  return render_template('home.html')
+	blog_entries=query_db("select * from blog_entries")
+	blog=[]
+	blog=[{'des':blog_entry['des'],'id':blog_entry['id'] } for blog_entry in blog_entries]
+	return render_template('getGithubBlog/home.html',blog=blog)
+
+
+## about blog
+@app.route('/blog/<blogId>')
+def blog(blogId):
+	blog_entries=query_db("select * from blog_entries where id=?",[blogId],one=True)
+	return render_template('blog.html',blog=blog_entries['text'])
+
 
 @app.route('/about')
 def about():
-  return render_template('about.html')
+    return render_template('about.html')
 
 
 @app.route('/getlink')
