@@ -1,38 +1,38 @@
-**练习flask的学习**
-**参考文档**
->* [使用ajax上传文档](https://github.com/xiyoulaoyuanjia/AboutWeb/blob/master/%E4%BD%BF%E7%94%A8ajax%E4%B8%8A%E4%BC%A0%E6%96%87%E6%A1%A3.md)
->* [an-introduction-to-pythons-flask-framework](http://net.tutsplus.com/tutorials/python-tutorials/an-introduction-to-pythons-flask-framework/)
-
-**已完成的demo**
-
-这个与 sae上面保持同步
-
-[demo](http://xiyoulaoyuanjia.sinaapp.com/)
-
-**************************************
-***上传图片获得链接***
-
-目前本地正常测试..SAE 上有点问题..
-
-[demo](xiyoulaoyuanjia.sinaapp.com/getlink)
+**simpleBlog**
 
 
-__todu__
+一个十分简单。易用的博客系统。使用flask 开发
 
-跨域上传 直接上传到 新浪微盘 并且获得链接 完成 [这里](https://github.com/xiyoulaoyuanjia/GetVdiskLink) 的 web版本
+>* 定时 抓取 github  [blog](https://github.com/xiyoulaoyuanjia/blog) 处的 文章。并存入数据库中
 
-*******************************
-***在线markdown编辑器***
+>* 采用  disqus 评论系统
 
-[参考文档](https://github.com/xiyoulaoyuanjia/AboutWeb/blob/master/%E5%9C%A8%E7%BA%BFmarkdown%E7%BC%96%E8%BE%91%E5%99%A8%E7%9A%84%E8%AF%B4%E6%98%8E%E6%96%87%E6%A1%A3.md)
+>* 前端 加载日历与 微薄 显示
 
-__感谢以下项目__
+>* 显示部分阅读全文功能
 
->* [mahua](http://mahua.jser.me/)
->* [ace](http://ace.ajax.org/)
 
-__todo__
+**todu**
 
->* 设置初始
->* 增加更换主题等功能
->* 补充文档说明
+
+>* 首页分页功能
+>* 标签墙功能
+>* 添加本地日志功能
+>* 按日期显示本地blog功能
+>* 移植sae 
+>* contact 页面开发
+>* 可以把之前的项目首页加入进来
+
+
+****
+**demo展示**
+
+
+![](http://openapi.vdisk.me/?m=file&a=download_share_file&ss=f161wamZVdYn3G2hargkjkecQHVbnsYsJez2I0ll1Rd--2B7--2BC8acBJHYPeUG2O7pE60wOsRCjgHLuPrYECzvb--2BjqjyogBC)
+
+![](http://openapi.vdisk.me/?m=file&a=download_share_file&ss=4f1e--2FrFueFLx3h6U81RTerN0sjYb5rLuabd3tQXSutgOly5CfTauNA--2BqZaq4a3MlrDUMpxM1rU9p7Fogn2uDg--2BSy--2BVc4)
+
+
+
+
+
