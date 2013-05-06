@@ -1,10 +1,7 @@
 # -*- coding: utf-8 -*-
 
-import sqlite3
-from flask import g
-from flask import Flask
+import MySQLdb as db
 
-app=Flask(__name__)
 
 #cur=com.cursor
 
@@ -20,23 +17,24 @@ def initInsertGlobal(globalName):
 	com=get_db()
 	for key in globalName:
 #		executeString="insert into  blog_entries(href,title,text) values (\'%s\',\'%s\',\'%s\')" % (globalName[key]['href'],globalName[key]['title'],globalName[key]['content'].replace("'","\'"))
-		executeTemplate="insert into  blog_entries(href,title,text,oriId,des) values (?,?,?,?,?)" 
-		com.execute(executeTemplate,(globalName[key]['href'],globalName[key]['title'],globalName[key]['content'],globalName[key]['id'],globalName[key]['des']))
+		executeTemplate="insert into  blog_entries(href,title,text,oriId,des) values (%s,%s,%s,%s,%s)" 
+		cur = com.cursor()
+		cur.execute(executeTemplate,(globalName[key]['href'],globalName[key]['title'],globalName[key]['content'].encode("utf-8"),globalName[key]['id'],globalName[key]['des']))
+#		cur.execute(executeTemplate,("ggg","k","ggg","UUU原价","GGGGG"))
 		com.commit()
 
 def get_db():
-		com=sqlite3.connect("getGithubBlog.db")
+#		com=sqlite3.connect("getGithubBlog.db")
+		com=db.connect("localhost","root","","blog",charset='utf8')
 		return com
 
 
 ###
-@app.before_request
 def before_request():
 	g.db = get_db()
 
 
 ## 
-@app.teardown_appcontext
 def close_db_connection(exception):
 	if hasattr(g, 'db'):
 		g.db.close()
