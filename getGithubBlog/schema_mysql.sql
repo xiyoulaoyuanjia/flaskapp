@@ -6,6 +6,7 @@ CREATE TABLE `blog_entries` (
   `href` varchar(500) NOT NULL,
   `oriId` varchar(500) DEFAULT NULL,
   `des` text,
+  `datetime` datetime,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
