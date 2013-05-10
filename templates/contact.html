@@ -1,0 +1,68 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<strong><link rel="stylesheet" href="{{ url_for('static', filename='css/getGithubBlog/github-0822fd4736edb41e9e5a7455464a0779b3a3db14.css') }}"></strong>
+<strong><link rel="stylesheet" href="{{ url_for('static', filename='css/getGithubBlog/github2-8f91085a65ed893494cb6c0333b723dc357cff76.css') }}"></strong>
+<strong><link rel="stylesheet" href="{{ url_for('static', filename='css/forms.css') }}"></strong>
+
+<div id="readme" class="blob instapaper_body">
+    <article class="markdown-body entry-content" itemprop="mainContentOfPage">
+	 <h2>Contact</h2>
+	 {% if success %}
+	 <div style="height:500">			 	
+			 <!--这代码太丑了... -->
+			 <p>Thank you for your message. We'll get back to you shortly.
+			 &nbsp;<p>
+			 &nbsp;<p>
+			 &nbsp;<p>
+			 &nbsp;<p>
+			 &nbsp;<p>
+			 &nbsp;<p>
+			 &nbsp;<p>
+			 &nbsp;<p>
+			 &nbsp;<p>
+			 &nbsp;<p>
+			 &nbsp;<p>
+			 &nbsp;<p>
+			 </p>
+		<!-- 等待8秒 跳转主页面 -->
+		<script>window.setTimeout(function() {  location="/" },1000*8);</script>
+	 </div>
+	{% else %}
+ 
+  	<form action="{{ url_for('contact') }}" method=post>
+    	{{ form.hidden_tag() }}
+
+    	{{ form.name.label }}
+  	 	{% for message in form.name.errors %}
+  	 		<div class="flashMessage">{{ message }}</div>
+     	{% endfor %}
+    	{{ form.name }}
+
+    	{{ form.email.label }}
+	 	{% for message in form.email.errors %}
+     		<div class="flashMessage">{{ message.decode("utf-8") }}</div>
+     	{% endfor %}
+    	{{ form.email }}
+
+    	{{ form.subject.label }}
+		{% for message in form.subject.errors %}
+  			<div class="flashMessage">{{ message }}</div>
+		{% endfor %}
+    	{{ form.subject }}
+
+    	{{ form.message.label }}
+		{% for message in form.message.errors %}
+  			<div class="flashMessage">{{ message }}</div>
+		{% endfor %}  
+   		{{ form.message }}
+
+    	{{ form.submit }}
+
+  	</form>
+
+	{% endif %}
+    </article>
+</div>
+{% endblock %}  
