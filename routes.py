@@ -10,6 +10,9 @@ ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
 
 import MySQLdb as db
 #from getGithubBlog import sqldb
+from getGithubBlog import getGithubBlog
+
+
 
 app = Flask(__name__)      
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
@@ -21,6 +24,13 @@ def addFavicon():
 def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
+
+
+
+@app.route("/update")
+def update():
+	getGithubBlog.updatemain()
+	return "ok"
 
 
 
@@ -88,10 +98,45 @@ def blog(blogId):
 	blog_entries=query_db("select * from blog_entries where id=%s",[blogId],one=True)
 	return render_template('blog.html',blog=blog_entries['text'])
 
-
-@app.route('/about')
+@app.route('/about',methods=['post','get'])
 def about():
     return render_template('about.html')
+
+
+
+from flask.ext.mail import Message, Mail
+import config
+mail=Mail()
+## config for mail
+app.config["MAIL_SERVER"] = "smtp.gmail.com"
+app.config["MAIL_PORT"] = 465
+app.config["MAIL_USE_SSL"] = True
+app.config["MAIL_USERNAME"] = getattr(config,'mailName','')
+app.config["MAIL_PASSWORD"] = getattr(config,'mailpasswd','')
+
+from forms import ContactForm
+app.secret_key = 'xiyoulaoyuanjia'
+
+mail.init_app(app)
+
+
+@app.route("/contact",methods=['post','get'])
+def contact():
+	form = ContactForm()
+	if request.method == "POST":
+		if form.validate() == False:
+			return render_template("contact.html",form=form)
+		else:
+			msg = Message(form.subject.data, sender='contact@example.com', recipients=['xiyoulaoyuanjia@gmail.com'])
+			msg.body = """
+			      From: %s <%s>
+			      %s
+			      """ % (form.name.data.encode("utf-8"), form.email.data.encode("utf-8"), form.message.data.encode("utf-8"))
+			mail.send(msg)
+		return render_template("contact.html",success=True)
+#		return "ok"
+	elif request.method == "GET":
+		return render_template("contact.html",form=form)
 
 
 @app.route('/getlink')
