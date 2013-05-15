@@ -1,0 +1,9 @@
+### 
+## 忽略掉以 ~ 结尾的文件
+*.*~
+*.swp
+*.pyc
+## 
+config.py
+##
+site-packages/

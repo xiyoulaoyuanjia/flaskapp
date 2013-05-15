@@ -183,13 +183,11 @@ def getPage(allItem=globalName):
 
 def updatemain():
 	db=get_db()
-        
 ## how do it whith [for in] .....
 ### oriId is like b128b7694e4de962e0088bcb1bcb254f-c427d342a9567ae85f40f17de4cff40cc03d3e02
 #### when we edite blog on the github the b128b7694e4de962e0088bcb1bcb254f is same
 	for item in update_db(db):
 		HashKey[item['oriId']]=item['datetime']
-       
 ## 
 	initMain(allItem=[upGlobalName,globalName])	
 
