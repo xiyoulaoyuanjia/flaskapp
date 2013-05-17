@@ -94,7 +94,8 @@ def home():
 ## 这块需要blog 总的数量..
 	blog_all=query_db("select * from blog_entries")
 	blog=[]
-	blog=[{'des':base64.decodestring(blog_entry['des']),'id':blog_entry['id'] } for blog_entry in blog_entries]
+#	blog=[{'des':base64.decodestring(blog_entry['des']),'id':blog_entry['id'] } for blog_entry in blog_entries]
+	blog=[{'des':base64.decodestring(blog_entry['des']),'id':blog_entry['id'] ,'datetime':blog_entry['datetime']} for blog_entry in blog_entries]
 #	return "ok"
 	return render_template('getGithubBlog/home.html',blog=blog,itemsOnPage=itemsOnPage,items=len(blog_all),currentPage=1)
 
@@ -103,12 +104,10 @@ def home():
 def page(pageName):
 	import base64
 	blog_entries=query_db("select * from blog_entries order by datetime desc limit %s,%s" % ((int(pageName)-1)*itemsOnPage,itemsOnPage))
-	print ("select * from blog_entries order by datetime desc limit %s,%s" % (int(pageName)*itemsOnPage,itemsOnPage))
 
 	blog_all=query_db("select * from blog_entries")
 	blog=[]
-	blog=[{'des':base64.decodestring(blog_entry['des']),'id':blog_entry['id'] } for blog_entry in blog_entries]
-	print blog
+	blog=[{'des':base64.decodestring(blog_entry['des']),'id':blog_entry['id'] ,'datetime':blog_entry['datetime']} for blog_entry in blog_entries]
 	return render_template('getGithubBlog/home.html',blog=blog,itemsOnPage=itemsOnPage,items=len(blog_all),currentPage=pageName)
 
 ## about blog

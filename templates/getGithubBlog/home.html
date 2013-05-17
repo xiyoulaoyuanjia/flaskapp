@@ -13,8 +13,9 @@
 	<div id="readme" class="blob instapaper_body">
 	<article class="markdown-body entry-content" itemprop="mainContentOfPage">
 		{{blog_entry.des |safe}}
-	{% set href='blog/' ~ blog_entry.id %}
+	{% set href='/blog/' ~ blog_entry.id %}
 	<p> <a href={{href}}# class="">阅读全文&#8230;</a></p>
+	<p> <font color="#0000FF"><a href="/" class="">xiyoulaoyuanjia&#8230;</a> 发表于 {{ blog_entry.datetime}}</font></p>
 	<p> <a href={{href}}#disqus_thread class=""></a></p>
 	</article>
 	

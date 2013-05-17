@@ -1,9 +1,16 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>xiyoulaoyuanjia</title>    
+    <title>xiyoulaoyuanjia</title>
+	    
 	<strong><link rel="stylesheet" href="{{ url_for('static', filename='css/layout.css') }}"></strong>
-	
+	<script type="text/javascript">
+		window.onload=function(){
+  		var a = document.getElementById("loading");
+  		a.parentNode.removeChild(a);
+	}
+		document.write('<div id="loading" style="background:#000000;color:#FFF;width:80px;padding-left:5px;position:absolute;line-height:22px">正在加载...</div>');
+	</script>
 	
 	<!--这样做的好处是如果用户已经去过使用与 Google 相同版本的 jQuery 的 网站后，访问你的网站时，页面可能会更快地载入，因为浏览器已经缓存了 jQuery -->
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.js"></script>
