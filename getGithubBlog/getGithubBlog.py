@@ -6,7 +6,7 @@ from HTMLParser import HTMLParser
 from time import sleep
 from threading import Thread
 
-from sqldb import *
+#from sqldb import *
 import datetime
 
 ## 

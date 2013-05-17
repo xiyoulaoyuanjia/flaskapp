@@ -5,6 +5,8 @@
 
 <strong><link rel="stylesheet" href="{{ url_for('static', filename='css/getGithubBlog/github-0822fd4736edb41e9e5a7455464a0779b3a3db14.css') }}"></strong>
 <strong><link rel="stylesheet" href="{{ url_for('static', filename='css/getGithubBlog/github2-8f91085a65ed893494cb6c0333b723dc357cff76.css') }}"></strong>
+<strong><link rel="stylesheet" href="{{ url_for('static', filename='css/simplePagination.css') }}"></strong>
+
 
 
 {% for blog_entry in blog%}
@@ -19,8 +21,23 @@
 	</div>
 {% endfor %}
 
+<script src="{{ url_for('static', filename='js/jquery.simplePagination.js') }}"></script>
+<div id=selector> </div>
 
  <script type="text/javascript">
+
+$(function() {
+// 可以参考 http://flaviusmatis.github.io/simplePagination.js/
+    $(selector).pagination({
+        items: {{items}},
+        itemsOnPage: {{itemsOnPage}},
+        cssStyle: 'light-theme',
+	hrefTextPrefix : '/page/',
+	currentPage: {{currentPage}},
+    });
+  
+});
+
     /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
     var disqus_shortname = 'xiyoulaoyuanjia'; // required: replace example with your forum shortname
 

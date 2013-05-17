@@ -34,7 +34,7 @@ def allowed_file(filename):
 @app.route("/update")
 def update():
 	getGithubBlog.updatemain()
-    return "ok"
+	return "ok"
 	
 
 ### for db 
@@ -85,16 +85,31 @@ def close_db_connection(exception):
     if hasattr(g, 'db'):
         g.db.close()
 
+## 每一页显示的数目
+itemsOnPage=5
 @app.route('/')
 def home():
 	import base64
-	blog_entries=query_db("select * from blog_entries")
+	blog_entries=query_db("select * from blog_entries order by datetime desc limit %s" % itemsOnPage)
+## 这块需要blog 总的数量..
+	blog_all=query_db("select * from blog_entries")
 	blog=[]
 	blog=[{'des':base64.decodestring(blog_entry['des']),'id':blog_entry['id'] } for blog_entry in blog_entries]
-	print type(base64.decodestring(blog_entry['des'])).__name__
 #	return "ok"
-	return render_template('getGithubBlog/home.html',blog=blog)
+	return render_template('getGithubBlog/home.html',blog=blog,itemsOnPage=itemsOnPage,items=len(blog_all),currentPage=1)
 
+## 分页显示的 route
+@app.route('/page/<pageName>')
+def page(pageName):
+	import base64
+	blog_entries=query_db("select * from blog_entries order by datetime desc limit %s,%s" % ((int(pageName)-1)*itemsOnPage,itemsOnPage))
+	print ("select * from blog_entries order by datetime desc limit %s,%s" % (int(pageName)*itemsOnPage,itemsOnPage))
+
+	blog_all=query_db("select * from blog_entries")
+	blog=[]
+	blog=[{'des':base64.decodestring(blog_entry['des']),'id':blog_entry['id'] } for blog_entry in blog_entries]
+	print blog
+	return render_template('getGithubBlog/home.html',blog=blog,itemsOnPage=itemsOnPage,items=len(blog_all),currentPage=pageName)
 
 ## about blog
 @app.route('/blog/<blogId>')
